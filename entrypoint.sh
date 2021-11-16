@@ -36,7 +36,8 @@ if [ -z "${INPUT_TEMPLATE}" ] ; then
 	fatal "'template' input parameter not provided"
 fi
 
-if ! packer validate -only="${INPUT_ONLY:=}" "${INPUT_OPTIONS}" "${INPUT_TEMPLATE}" ; then
+# Removed INPUT_OPTIONS from validate, so that "-force" can be used
+if ! packer validate -only="${INPUT_ONLY:=}" "${INPUT_TEMPLATE}" ; then
 	fatal "'${INPUT_TEMPLATE}' template validation failed"
 fi
 
